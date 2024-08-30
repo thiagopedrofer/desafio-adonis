@@ -1,8 +1,12 @@
 import User from '#models/user';
 import UserRepository from '#repositories/user_repository';
+import { inject } from '@adonisjs/core';
 
+@inject()
 export default class AuthService {
-  private userRepository = new UserRepository();
+  constructor(
+    private userRepository: UserRepository
+  ) {}
 
   public async register(payload: any) {
     return await this.userRepository.create(payload);

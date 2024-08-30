@@ -1,7 +1,12 @@
 import TaskRepository from '#repositories/task_repository';
+import { inject } from '@adonisjs/core';
+
+@inject()
 
 export default class TaskService {
-  private taskRepository = new TaskRepository();
+  constructor(
+    private taskRepository: TaskRepository
+  ) {}
 
   public async createTask(payload: any, userId: number) {
     payload.user_id = userId;

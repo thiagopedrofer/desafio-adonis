@@ -1,10 +1,12 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import TaskService from '#services/task_service';
 import { CreateTaskValidator } from '#validators/tasks/create';
+import { inject } from '@adonisjs/core';
 
+@inject()
 export default class TasksController {
 
-  private taskService = new TaskService();
+  constructor(private taskService: TaskService) {}
 
   public async create({ request, auth, response }: HttpContext) {
     const payload = await request.validateUsing(CreateTaskValidator)

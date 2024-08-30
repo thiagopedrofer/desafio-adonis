@@ -2,9 +2,11 @@ import type { HttpContext } from '@adonisjs/core/http';
 import { LoginValidator } from '#validators/login';
 import { registerValidator } from '#validators/users/create';
 import AuthService from '#services/auth_service';
+import { inject } from '@adonisjs/core';
 
+@inject()
 export default class AuthController {
-  private authService = new AuthService();
+  constructor(private authService: AuthService) {}
 
   public async register({ request, response }: HttpContext) {
     const payload = await request.validateUsing(registerValidator);

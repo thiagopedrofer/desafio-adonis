@@ -1,7 +1,8 @@
 import User from '#models/user';
+import { RegisterPayload } from '#interfaces/auth'
 
 export default class UserRepository {
-  public async create(payload: any) {
+  public async create(payload: RegisterPayload) {
     return await User.create(payload);
   }
 

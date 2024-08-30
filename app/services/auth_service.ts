@@ -1,6 +1,7 @@
 import User from '#models/user';
 import UserRepository from '#repositories/user_repository';
 import { inject } from '@adonisjs/core';
+import { RegisterPayload } from '#interfaces/auth';
 
 @inject()
 export default class AuthService {
@@ -8,7 +9,7 @@ export default class AuthService {
     private userRepository: UserRepository
   ) {}
 
-  public async register(payload: any) {
+  public async register(payload: RegisterPayload) {
     return await this.userRepository.create(payload);
   }
 
@@ -17,7 +18,7 @@ export default class AuthService {
     return User.accessTokens.create(user); 
   }
 
-  public async logout(user: any) {
+  public async logout(user: User) {
     await this.userRepository.deleteAccessToken(user, user.currentAccessToken.identifier);
   }
 }

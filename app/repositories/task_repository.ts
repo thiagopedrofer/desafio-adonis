@@ -1,7 +1,8 @@
 import Task from '#models/task';
+import { TaskPayload } from '#interfaces/task';
 
 export default class TaskRepository {
-  public async create(payload: any) {
+  public async create(payload: TaskPayload) {
     return await Task.create(payload);
   }
 
@@ -13,7 +14,7 @@ export default class TaskRepository {
     return await Task.query().where('user_id', userId);
   }
 
-  public async update(taskId: number, payload: any) {
+  public async update(taskId: number, payload: TaskPayload) {
     const task = await Task.find(taskId);
     if (task) {
       task.merge(payload);

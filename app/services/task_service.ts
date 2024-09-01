@@ -1,6 +1,7 @@
 import TaskRepository from '#repositories/task_repository';
 import { inject } from '@adonisjs/core';
 import { TaskPayload } from '#interfaces/task';
+import { TaskFilters } from '#interfaces/task_filter';
 
 @inject()
 
@@ -18,8 +19,8 @@ export default class TaskService {
     return await this.taskRepository.findById(taskId, userId);
   }
 
-  public async getAllTasks(userId: number) {
-    return await this.taskRepository.findAllByUserId(userId);
+  public async getAllTasks(userId: number, filters: TaskFilters) {
+    return await this.taskRepository.findAllByUserId(userId, filters);
   }
 
   public async updateTask(taskId: number, payload: TaskPayload, userId: number) {

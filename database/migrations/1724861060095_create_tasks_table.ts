@@ -8,6 +8,10 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('name')
       table.string('description')
+      table.enum('priority', ['low', 'medium', 'high'])
+      table
+        .enum('status', ['pending', 'in_progress', 'completed'])
+        .defaultTo('pending')
 
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
 

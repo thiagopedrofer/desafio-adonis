@@ -13,6 +13,12 @@ export default class Task extends BaseModel {
   @column()
   declare description: string
 
+  @column()
+  declare status: string
+
+  @column()
+  declare priority: string
+
   @column({ columnName: 'user_id' })
   declare userId: number
 

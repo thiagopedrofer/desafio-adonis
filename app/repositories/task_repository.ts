@@ -33,22 +33,11 @@ export default class TaskRepository {
     return await query;
   }
 
-  public async update(taskId: number, payload: TaskPayload) {
-    const task = await Task.find(taskId);
-    if (task) {
-      task.merge(payload);
-      await task.save();
-      return task;
-    }
-    return null;
+  public async update(taskId: number, payload: TaskPayload, userId:number) {
+    return await Task.query().where('id', taskId).andWhere('user_id', userId).update(payload);
   }
 
   public async delete(taskId: number) {
-    const task = await Task.find(taskId);
-    if (task) {
-      await task.delete();
-      return true;
-    }
-    return false;
+    return await Task.query().where('id', taskId).delete();
   }
 }

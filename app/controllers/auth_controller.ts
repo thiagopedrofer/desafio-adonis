@@ -1,5 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http';
-import { LoginValidator } from '#validators/login';
+import { LoginValidator } from '#validators/users/login';
 import { registerValidator } from '#validators/users/create';
 import AuthService from '#services/auth_service';
 import { inject } from '@adonisjs/core';

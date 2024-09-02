@@ -20,11 +20,15 @@ export const plugins: Config['plugins'] = [assert(), apiClient(), pluginAdonisJS
  * tests.
  *
  * The setup functions are executed before all the tests
- * The teardown functions are executer after all the tests
+ * The teardown functions are executed after all the tests
  */
 export const runnerHooks: Required<Pick<Config, 'setup' | 'teardown'>> = {
-  setup: [],
-  teardown: [],
+  setup: [
+    () => testUtils.db().migrate(), // Run migrations before tests
+  ],
+  teardown: [
+    
+  ],
 }
 
 /**

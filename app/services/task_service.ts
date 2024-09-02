@@ -58,7 +58,7 @@ export default class TaskService {
 
     await this.taskRepository.update(taskId, payload, userId);
 
-    return {'message':'Task atualiza com sucesso'};
+    return {'message':'Task updates successfully'};
     
   }
 

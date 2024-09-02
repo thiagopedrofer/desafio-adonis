@@ -34,28 +34,38 @@ Este projeto é uma aplicação backend desenvolvida com AdonisJS. Inclui funcio
 ### Passos para Instalação
 
 1. Clone o repositório:
-    ```bash
+    
     git clone https://github.com/thiagopedrofer/desafio-adonis.git
     cd desafio-adonis
-    ```
 
 2. Instale as dependências:
-    ```bash
-    npm install
-    ```
 
-3. Configure o banco de dados:
-    - Crie um banco de dados PostgreSQL e atualize as configurações no arquivo `.env`.
+    npm install
+
+3. Configuração do Banco de Dados com Docker
+Este projeto já inclui um arquivo docker-compose.yml para facilitar a criação e configuração do banco de dados PostgreSQL. Para iniciar o banco de dados usando Docker, siga os passos abaixo:
+
+Certifique-se de que o Docker está instalado e em execução na sua máquina.
+
+No diretório raiz do projeto, execute o seguinte comando para iniciar o contêiner do PostgreSQL:
+
+docker-compose up -d
+
+Isso criará e iniciará um contêiner PostgreSQL com as configurações especificadas no arquivo docker-compose.yml.
+
+O banco de dados estará acessível na porta 5432 com as seguintes credenciais padrão:
+
+Usuário: root
+Senha: root
+Database: backend
 
 4. Execute as migrações:
-    ```bash
+   
     node ace migration:run
-    ```
 
 5. Inicie o servidor:
-    ```bash
+ 
     npm run dev
-    ```
 
 ## Uso
 
@@ -77,7 +87,6 @@ Este projeto é uma aplicação backend desenvolvida com AdonisJS. Inclui funcio
 
 #### Registrar Usuário
 
-```bash
 curl -X POST http://localhost:3333/register \
   -H "Content-Type: application/json" \
   -d '{"fullName": "John Doe", "email": "john.doe@example.com", "password": "securepassword"}'
